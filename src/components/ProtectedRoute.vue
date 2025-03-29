@@ -6,22 +6,23 @@
 </template>
 
 <script setup>
-import { ref } from "vue";
-import api from "@/utils/axiosInstance";
+import { ref } from 'vue'
+import api from '@/utils/axiosInstance'
 
-const message = ref("");
+const message = ref('')
 
 const fetchProtectedData = async () => {
-  const token = localStorage.getItem("token");
+  const token = localStorage.getItem('token')
 
   try {
-    const response = await api.get("/auth/protected", {
+    console.log('token', token)
+    const response = await api.get('/auth/protected', {
       headers: { Authorization: `Bearer ${token}` },
-    });
+    })
 
-    message.value = response.data.message;
+    message.value = response.data.message
   } catch (error) {
-    message.value = "Access Denied!";
+    message.value = 'Access Denied!'
   }
-};
+}
 </script>

@@ -1,11 +1,6 @@
 <template>
   <div>
-    <GoogleLogin
-      ref="googleLoginBtn"
-      :callback="handleSuccess"
-      class="hidden"
-      :scope="'https://www.googleapis.com/auth/drive.file'"
-    />
+    <GoogleLogin ref="googleLoginBtn" :callback="handleSuccess" class="hidden" />
   </div>
 </template>
 
