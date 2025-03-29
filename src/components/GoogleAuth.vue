@@ -18,7 +18,7 @@ const handleSuccess = async (response) => {
     })
 
     console.log('Server Response:', data)
-    localStorage.setItem('token', data.token) // Lưu JWT vào localStorage
+    localStorage.setItem('token', data.token)
   } catch (error) {
     console.error('Login Error:', error.response?.data || error.message)
   }
@@ -26,7 +26,7 @@ const handleSuccess = async (response) => {
 
 const triggerGoogleLogin = () => {
   if (googleLoginBtn.value) {
-    googleLoginBtn.value.$el.click() // Click vào nút Google login ẩn
+    googleLoginBtn.value.$el.click() 
   } else {
     console.error('Google login button is not available')
   }

@@ -2,11 +2,11 @@
   <GoogleLogin :client-id="clientId" :callback="handleLoginSuccess" />
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { GoogleLogin } from 'vue3-google-login'
 import axios from 'axios'
 
-const clientId = import.meta.env.VITE_GOOGLE_CLIENT_ID
+const clientId = import.meta.env.VITE_GOOGLE_CLIENT_ID || ''
 
 const handleLoginSuccess = async (response) => {
   try {
