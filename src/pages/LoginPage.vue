@@ -16,8 +16,8 @@ const handleLoginSuccess = async (response) => {
       { withCredentials: true },
     )
 
-    console.log('Token returned from BE', res)
-    localStorage.setItem('Token', res.data.Token)
+    console.log('Token returned from BE', res.data.accessToken)
+    localStorage.setItem('token', res.data.Token)
   } catch (error) {
     console.error('Login Error:', error)
   }

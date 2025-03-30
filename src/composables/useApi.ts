@@ -1,24 +1,34 @@
-import { ref } from "vue";
-import api from "@/utils/axiosInstance";
+import { ref } from 'vue'
+import api from '@/utils/axiosInstance'
 
-export function useApi<T>(endpoint: string) {
-  const data = ref<T | null>(null);
-  const loading = ref(false);
-  const error = ref<string | null>(null);
+interface ApiResponse<T> {
+  data: T | null
+  loading: boolean
+  error: string | null
+  fetchData: () => Promise<void>
+}
 
-  const fetchData = async (params = {}) => {
-    loading.value = true;
-    error.value = null;
+export function useApi<T>(
+  url: string,
+  method: 'get' | 'post' | 'put' | 'delete',
+  body?: any,
+): ApiResponse<T> {
+  const data = ref<T | null>(null)
+  const loading = ref<boolean>(false)
+  const error = ref<string | null>(null)
 
+  const fetchData = async () => {
+    loading.value = true
+    error.value = null
     try {
-      const response = await api.get(endpoint, { params });
-      data.value = response.data;
+      const response = await api[method]<T>(url, body)
+      data.value = response.data
     } catch (err: any) {
-      error.value = err.response?.data?.message || "Something went wrong!";
+      error.value = err.response?.data?.message || 'Something went wrong'
     } finally {
-      loading.value = false;
+      loading.value = false
     }
-  };
+  }
 
-  return { data, loading, error, fetchData };
+  return { data, loading, error, fetchData }
 }

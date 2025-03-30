@@ -17,7 +17,7 @@ const handleSuccess = async (response) => {
       token: response.credential,
     })
 
-    console.log('Server Response:', data)
+    console.log('Server Response:', data.token)
     localStorage.setItem('token', data.token)
   } catch (error) {
     console.error('Login Error:', error.response?.data || error.message)
@@ -26,7 +26,7 @@ const handleSuccess = async (response) => {
 
 const triggerGoogleLogin = () => {
   if (googleLoginBtn.value) {
-    googleLoginBtn.value.$el.click() 
+    googleLoginBtn.value.$el.click()
   } else {
     console.error('Google login button is not available')
   }
