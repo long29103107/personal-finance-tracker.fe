@@ -6,9 +6,6 @@
 <script lang="ts" setup>
 import URL_CONSTANTS from '@/constants/url-constants'
 import { useApi } from '@/composables/useApi'
-
-console.log('URL_CONSTANTS', URL_CONSTANTS.IDENTITY.ROLE)
-
 import { onMounted } from 'vue'
 
 // 🛠 Gọi API GET users
@@ -17,7 +14,7 @@ const {
   loading,
   error,
   fetchData,
-} = useApi<{ id: number; name: string }[]>(URL_CONSTANTS.IDENTITY.ROLE, 'get')
+} = useApi<{ id: number; name: string }[]>(URL_CONSTANTS.IDENTITY.ROLE, 'get', null, true)
 
 onMounted(fetchData)
 </script>

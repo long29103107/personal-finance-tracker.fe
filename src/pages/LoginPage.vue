@@ -17,7 +17,7 @@ const handleLoginSuccess = async (response) => {
     )
 
     console.log('Token returned from BE', res.data.accessToken)
-    localStorage.setItem('token', res.data.Token)
+    localStorage.setItem('token', res.data.accessToken)
   } catch (error) {
     console.error('Login Error:', error)
   }

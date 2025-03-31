@@ -1,17 +1,12 @@
 import { ref } from 'vue'
 import api from '@/utils/axiosInstance'
-
-interface ApiResponse<T> {
-  data: T | null
-  loading: boolean
-  error: string | null
-  fetchData: () => Promise<void>
-}
+import { type ApiResponse } from '@/types/Api/apiTypes'
 
 export function useApi<T>(
   url: string,
   method: 'get' | 'post' | 'put' | 'delete',
   body?: any,
+  auth: boolean = false,
 ): ApiResponse<T> {
   const data = ref<T | null>(null)
   const loading = ref<boolean>(false)
@@ -20,8 +15,28 @@ export function useApi<T>(
   const fetchData = async () => {
     loading.value = true
     error.value = null
+
+    console.log('Start fetchData')
     try {
-      const response = await api[method]<T>(url, body)
+      const headers: Record<string, string> = {}
+
+      // Nếu cần auth, thêm Bearer Token vào headers
+      if (auth) {
+        const token = localStorage.getItem('token') // Lấy token từ localStorage
+
+        console.log('token', token)
+        if (token) {
+          headers['Authorization'] = `Bearer ${token}`
+        }
+      }
+
+      const response = await api.request<T>({
+        url,
+        method,
+        data: body,
+        headers, // Truyền headers vào request
+      })
+
       data.value = response.data
     } catch (err: any) {
       error.value = err.response?.data?.message || 'Something went wrong'
