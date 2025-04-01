@@ -5,32 +5,27 @@
   <a-button @click="handleLogout" type="primary">Logout</a-button>
 </template>
 <script lang="ts" setup>
+import axios from 'axios'
+import { exceptionHandler } from '@/utils/exceptionHandler'
 import URL_CONSTANTS from '@/constants/url-constants'
-import { useApi } from '@/composables/useApi'
-import { onMounted } from 'vue'
 import { useRouter } from 'vue-router'
-
-// // 🛠 Gọi API GET users
-// const {
-//   data: users,
-//   loading,
-//   error,
-//   fetchData,
-// } = useApi<{ id: number; name: string }[]>(URL_CONSTANTS.IDENTITY.ROLE, 'get', null, true)
-
-// onMounted(fetchData)
 
 const router = useRouter()
 
-const { fetchData, loading } = useApi<null>(
-  `${import.meta.env.VITE_API_URL}${URL_CONSTANTS.AUTH.LOGOUT}`,
-  'post',
-  null,
-  true,
-)
-
 const handleLogout = async () => {
-  await fetchData()
+  try {
+    const res = await axios.post(
+      `${import.meta.env.VITE_API_URL}${URL_CONSTANTS.AUTH.LOGIN_GOOGLE}`,
+      { token: response.credential },
+      { withCredentials: true },
+    )
+
+    localStorage.setItem('token', res.data.accessToken)
+
+    router.push('/')
+  } catch (error) {
+    exceptionHandler.handle(error)
+  }
 
   localStorage.removeItem('token')
 

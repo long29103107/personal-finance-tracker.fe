@@ -3,8 +3,8 @@ const URL_CONSTANTS = {
     ROLE: '/roles',
   },
   AUTH: {
-    LOGIN_GOOGLE: '/auth/google-login',
-    LOGOUT: '/auth/logout',
+    LOGIN_GOOGLE: '/api/authentication/google-login',
+    LOGOUT: '/authentication/logout',
   },
 } as const
 
