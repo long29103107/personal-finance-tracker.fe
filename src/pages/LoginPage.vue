@@ -8,7 +8,7 @@
 
 <script setup lang="ts">
 import { GoogleLogin } from 'vue3-google-login'
-import axios from 'axios'
+import axiosInstance from '@/utils/axiosInstance'
 import { exceptionHandler } from '@/utils/exceptionHandler'
 import { useRouter } from 'vue-router'
 import URL_CONSTANTS from '@/constants/url-constants'
@@ -19,7 +19,7 @@ const clientId = import.meta.env.VITE_GOOGLE_CLIENT_ID || ''
 
 const handleLoginSuccess = async (response) => {
   try {
-    const res = await axios.post(
+    const res = await axiosInstance.post(
       `${import.meta.env.VITE_API_URL}${URL_CONSTANTS.AUTH.LOGIN_GOOGLE}`,
       { token: response.credential },
       { withCredentials: true },
@@ -28,8 +28,9 @@ const handleLoginSuccess = async (response) => {
     localStorage.setItem('token', res.data.accessToken)
 
     router.push('/')
-  } catch (error) {
-    exceptionHandler.handle(error)
+  } catch (err) {
+    console.log(err)
+    exceptionHandler.handle(err)
   }
 }
 </script>

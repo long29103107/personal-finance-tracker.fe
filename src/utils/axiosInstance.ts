@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const api = axios.create({
+const axiosInstance = axios.create({
   baseURL: `${import.meta.env.VITE_API_URL}/api`,
   // timeout: 10000, // 10 giây timeout
   // withCredentials: true, // Gửi cookies với request
@@ -9,13 +9,15 @@ const api = axios.create({
   },
 })
 
-// // 👉 Thêm Bearer Token nếu có
-// api.interceptors.request.use((config) => {
-//   const token = localStorage.getItem("token"); // Lấy token từ localStorage
-//   if (token) {
-//     config.headers.Authorization = `Bearer ${token}`;
-//   }
-//   return config;
-// });
+axiosInstance.interceptors.request.use((config) => {
+  const token = localStorage.getItem('token')
+  console.log('token', token)
 
-export default api
+  if (token) {
+    config.headers.Authorization = `Bearer ${token}`
+  }
+
+  return config
+})
+
+export default axiosInstance

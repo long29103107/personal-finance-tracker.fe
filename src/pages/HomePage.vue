@@ -5,7 +5,7 @@
   <a-button @click="handleLogout" type="primary">Logout</a-button>
 </template>
 <script lang="ts" setup>
-import axios from 'axios'
+import axiosInstance from '@/utils/axiosInstance'
 import { exceptionHandler } from '@/utils/exceptionHandler'
 import URL_CONSTANTS from '@/constants/url-constants'
 import { useRouter } from 'vue-router'
@@ -14,16 +14,11 @@ const router = useRouter()
 
 const handleLogout = async () => {
   try {
-    const res = await axios.post(
-      `${import.meta.env.VITE_API_URL}${URL_CONSTANTS.AUTH.LOGIN_GOOGLE}`,
-      { token: response.credential },
-      { withCredentials: true },
+    const res = await axiosInstance.post(
+      `${import.meta.env.VITE_API_URL}${URL_CONSTANTS.AUTH.LOGOUT}`,
     )
-
-    localStorage.setItem('token', res.data.accessToken)
-
-    router.push('/')
   } catch (error) {
+    console.log(error)
     exceptionHandler.handle(error)
   }
 
