@@ -1,6 +1,7 @@
 import { ref } from 'vue'
 import api from '@/utils/axiosInstance'
 import { type ApiResponse } from '@/types/Api/apiTypes'
+import { exceptionHandler } from '@/utils/exceptionHandler'
 
 export function useApi<T>(
   url: string,
@@ -20,11 +21,9 @@ export function useApi<T>(
     try {
       const headers: Record<string, string> = {}
 
-      // Nếu cần auth, thêm Bearer Token vào headers
       if (auth) {
-        const token = localStorage.getItem('token') // Lấy token từ localStorage
+        const token = localStorage.getItem('token')
 
-        console.log('token', token)
         if (token) {
           headers['Authorization'] = `Bearer ${token}`
         }
@@ -34,12 +33,12 @@ export function useApi<T>(
         url,
         method,
         data: body,
-        headers, // Truyền headers vào request
+        headers,
       })
 
       data.value = response.data
     } catch (err: any) {
-      error.value = err.response?.data?.message || 'Something went wrong'
+      exceptionHandler.handle(err)
     } finally {
       loading.value = false
     }

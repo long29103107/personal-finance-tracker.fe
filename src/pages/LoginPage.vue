@@ -5,6 +5,7 @@
 <script setup lang="ts">
 import { GoogleLogin } from 'vue3-google-login'
 import axios from 'axios'
+import { exceptionHandler } from '@/utils/exceptionHandler'
 
 const clientId = import.meta.env.VITE_GOOGLE_CLIENT_ID || ''
 
@@ -19,7 +20,7 @@ const handleLoginSuccess = async (response) => {
     console.log('Token returned from BE', res.data.accessToken)
     localStorage.setItem('token', res.data.accessToken)
   } catch (error) {
-    console.error('Login Error:', error)
+    exceptionHandler.handle(error)
   }
 }
 </script>
