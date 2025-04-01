@@ -17,7 +17,6 @@ export function useApi<T>(
     loading.value = true
     error.value = null
 
-    console.log('Start fetchData')
     try {
       const headers: Record<string, string> = {}
 
@@ -29,6 +28,7 @@ export function useApi<T>(
         }
       }
 
+      console.log(`Starting call api ${url}`)
       const response = await api.request<T>({
         url,
         method,

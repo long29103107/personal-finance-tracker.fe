@@ -2,7 +2,7 @@ import Layout from '@/layouts/ClientPageLayout.vue'
 import HomePage from '@/pages/HomePage.vue'
 import LoginPage from '@/pages/LoginPage.vue'
 
-export default [
+const routesWithLayouts = [
   {
     path: '/',
     component: Layout,
@@ -12,6 +12,14 @@ export default [
         name: 'Home',
         component: HomePage,
       },
+    ],
+  },
+]
+
+const routesWithoutLayouts = [
+  {
+    path: '/',
+    children: [
       {
         path: 'login',
         name: 'Login',
@@ -20,3 +28,5 @@ export default [
     ],
   },
 ]
+
+export default routesWithLayouts.concat(routesWithoutLayouts)
