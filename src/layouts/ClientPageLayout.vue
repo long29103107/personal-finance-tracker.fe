@@ -1,11 +1,21 @@
 <template>
   <a-layout>
-    <h1>Header</h1>
+    <header-component />
 
     <div id="user-template">
       <router-view></router-view>
     </div>
-
-    <h1>Footer</h1>
   </a-layout>
 </template>
+
+<script setup lang="ts">
+import { defineComponent } from 'vue'
+import HeaderComponent from '@/components/Common/HeaderComponent.vue'
+
+defineComponent({
+  name: 'ClintPageLayout',
+  components: {
+    HeaderComponent,
+  },
+})
+</script>
