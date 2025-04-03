@@ -7,7 +7,12 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-/* Optional: Apply Montserrat globally */
+
 body {
   font-family: var(--font-family-montserrat);
+}
+
+#app {
+  margin: 0;
+  padding: 0;
 }

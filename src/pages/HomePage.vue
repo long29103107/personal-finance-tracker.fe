@@ -1,25 +1,30 @@
 <template>
   <main class="main-container">
     <a-row :gutter="[16, 16]">
-      <a-col :span="10" :offset="4">
-        <a-card title="Line Chart" :bordered="false">
-          <p>card content</p>
+      <a-col :xs="{ span: 24, offset: 0 }" :xl="{ span: 10, offset: 4 }">
+        <a-card title="Line Chart" :bordered="false" style="height: 500px">
+          <line-chart-component />
         </a-card>
       </a-col>
-      <a-col :span="6">
-        <a-card title="Calendar" :bordered="false">
-          <p>card content</p>
+      <a-col :xs="24" :xl="6">
+        <a-card
+          title="Calendar"
+          :bordered="false"
+          :style="{ height: '500px', width: '100%' }"
+          body-style="display: flex; justify-content: center; align-items: center;"
+        >
+          <calendar-component />
         </a-card>
       </a-col>
     </a-row>
 
-    <a-row :gutter="[16, 16]" class="mt-8">
-      <a-col :span="10" :offset="4">
+    <a-row :gutter="[16, 16]" class="mt-4">
+      <a-col :xs="{ span: 24, offset: 0 }" :xl="{ span: 10, offset: 4 }">
         <a-card title="Transaction" :bordered="false">
           <transaction-component />
         </a-card>
       </a-col>
-      <a-col :span="6">
+      <a-col :xs="24" :xl="6">
         <a-card title="Donut Chart" :bordered="false">
           <donut-chart-component />
         </a-card>
@@ -40,6 +45,8 @@ import URL_CONSTANTS from '@/constants/url-constants'
 import { useRouter } from 'vue-router'
 import DonutChartComponent from '@/components/Home/DonutChartComponent.vue'
 import TransactionComponent from '@/components/Home/TransactionComponent.vue'
+import CalendarComponent from '@/components/Home/CalendarComponent.vue'
+import LineChartComponent from '@/components/Home/LineChartComponent.vue'
 
 const router = useRouter()
 

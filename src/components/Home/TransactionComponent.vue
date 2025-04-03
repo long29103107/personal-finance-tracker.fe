@@ -1,20 +1,42 @@
 <template>
-  <a-list
-    :data-source="transactions"
-    :pagination="pagination"
-    bordered
-    header="Transaction List"
-    class="transaction-list"
-  >
-    <template #renderItem="{ item }">
-      <a-list-item>
-        <div class="item-content">
-          <span class="item-title">{{ item.title }}</span>
-          <span class="item-amount">{{ item.amount }}</span>
-        </div>
-      </a-list-item>
-    </template>
-  </a-list>
+  <div>
+    <!-- Filters -->
+    <div class="filters">
+      <a-select
+        v-model="selectedYear"
+        placeholder="Select Year"
+        style="width: 120px"
+        @change="filterTransactions"
+      >
+        <a-select-option v-for="year in years" :key="year" :value="year">
+          {{ year }}
+        </a-select-option>
+      </a-select>
+
+      <a-select
+        v-model="selectedMonth"
+        placeholder="Select Month"
+        style="width: 120px; padding-left: 10px"
+        @change="filterTransactions"
+      >
+        <a-select-option v-for="(month, index) in months" :key="index" :value="index + 1">
+          {{ month }}
+        </a-select-option>
+      </a-select>
+    </div>
+
+    <!-- Transaction List -->
+    <a-list :data-source="transactions" :pagination="pagination" class="transaction-list">
+      <template #renderItem="{ item }">
+        <a-list-item>
+          <div class="item-content">
+            <span class="item-title">{{ item.title }}</span>
+            <span class="item-amount">{{ item.amount }}</span>
+          </div>
+        </a-list-item>
+      </template>
+    </a-list>
+  </div>
 </template>
 
 <script lang="ts" setup>
@@ -38,9 +60,9 @@ const transactions = ref([
 
 // Pagination configuration
 const pagination = {
-  pageSize: 5, // Number of items per page
+  pageSize: 10, // Number of items per page
   showSizeChanger: true, // Allow changing page size
-  pageSizeOptions: ['5', '10', '15'], // Options for page size
+  pageSizeOptions: ['10', '20', '40'], // Options for page size
   showQuickJumper: true, // Allow jumping to a specific page
   total: transactions.value.length, // Total number of items
 }
@@ -48,7 +70,6 @@ const pagination = {
 
 <style scoped>
 .transaction-list {
-  max-width: 600px;
   margin: 0 auto;
 }
 
