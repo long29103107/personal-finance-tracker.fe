@@ -1,7 +1,7 @@
 <!-- filepath: d:\10.PersonalFinanceTracker\personal-finance-tracker.fe\src\components\Common\Header.vue -->
 <template>
   <section class="header-center">
-    <p class="large-text"><b>Hello</b> Long !</p>
+    <p class="large-text"><b>Hello</b> Long Ne!</p>
     <p class="large-text">Welcome Back</p>
     <a-button @click="handleCreateSheet">Create Sheet</a-button>
   </section>
