@@ -60,6 +60,7 @@ const handleLogout = async () => {
     exceptionHandler.handle(error)
   }
 
+  localStorage.removeItem('google_token')
   localStorage.removeItem('token')
 
   router.push('/login')
