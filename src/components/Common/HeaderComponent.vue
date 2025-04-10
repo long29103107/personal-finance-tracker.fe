@@ -3,38 +3,10 @@
   <section class="header-center">
     <p class="large-text"><b>Hello</b> Long Ne!</p>
     <p class="large-text">Welcome Back</p>
-    <a-button @click="handleCreateSheet">Create Sheet</a-button>
   </section>
 </template>
 
-<script lang="ts" setup>
-import axiosInstance from '@/utils/axiosInstance'
-const handleCreateSheet = async () => {
-  console.log('Create Sheet button clicked!')
-  try {
-    console.log('url', `${import.meta.env.VITE_API_URL}/identity/google/create-sheet`)
-
-    const googleToken = localStorage.getItem('google_token')
-    console.log('google_token', googleToken)
-    // Gửi yêu cầu đến API
-    const res = await axiosInstance.post('http://localhost:5000/identity/google/create-sheet', {
-      token: googleToken,
-    })
-    console.log('Google Sheet Created:', res.data)
-
-    // Kiểm tra phản hồi từ API
-    if (res.status === 200) {
-      console.log('Sheet URL:', res.data.sheetUrl)
-
-      // Mở Google Sheet trong tab mới
-      window.open(res.data.sheetUrl, '_blank')
-    } else {
-    }
-  } catch (err) {
-    console.error('Error creating Google Sheet:', err)
-  }
-}
-</script>
+<script lang="ts" setup></script>
 
 <style scoped>
 .header-center {

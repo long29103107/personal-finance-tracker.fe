@@ -11,7 +11,11 @@
           title="Calendar"
           :bordered="false"
           :style="{ height: '500px', width: '100%' }"
-          body-style="display: flex; justify-content: center; align-items: center;"
+          :body-style="{
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+          }"
         >
           <calendar-component />
         </a-card>
@@ -30,8 +34,8 @@
         </a-card>
 
         <a-card title="Total Balance" :bordered="false" class="mt-8">
-          <p>$7,540.00</p>
-          <p>+8,00%</p>
+          💰 Total Balance: <strong>{{ totalBalance?.toLocaleString() }} VND</strong>
+          <!-- <p>+8,00%</p> -->
         </a-card>
       </a-col>
     </a-row>
@@ -47,8 +51,11 @@ import DonutChartComponent from '@/components/Home/DonutChartComponent.vue'
 import TransactionComponent from '@/components/Home/TransactionComponent.vue'
 import CalendarComponent from '@/components/Home/CalendarComponent.vue'
 import LineChartComponent from '@/components/Home/LineChartComponent.vue'
+import { useTotalBalance } from '@/composables/useTotalBalance'
 
 const router = useRouter()
+
+const { totalBalance, isLoading, error } = useTotalBalance()
 
 const handleLogout = async () => {
   try {

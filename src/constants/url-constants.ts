@@ -6,6 +6,11 @@ const URL_CONSTANTS = {
     LOGIN_GOOGLE: '/identity/authentication/google-login',
     LOGOUT: '/identity/authentication/logout',
   },
+  TRACKER: {
+    DASHBOARD: {
+      TOTAL_BALANCES: '/tracker/dashboard/total-balance',
+    },
+  },
 } as const
 
 export default URL_CONSTANTS
