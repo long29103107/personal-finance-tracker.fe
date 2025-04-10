@@ -9,7 +9,7 @@ import 'ant-design-vue/dist/reset.css'
 
 const app = createApp(App)
 
-// app.use(createPinia())
+app.use(createPinia())
 
 app.use(Antd)
 app.use(router)
