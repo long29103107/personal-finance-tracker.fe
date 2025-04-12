@@ -1,6 +1,6 @@
 <template>
   <a-menu v-model:selectedKeys="selectedKeys" theme="dark" mode="inline">
-    <menu-sidebar-item v-for="item in dataMenu" :menuItem="item" :key="item.key" />
+    <menu-sidebar-item-view v-for="item in dataMenu" :menu-item="item" :key="item.key" />
   </a-menu>
 </template>
 
@@ -16,7 +16,7 @@ import {
   FileOutlined,
 } from '@ant-design/icons-vue'
 import { useRoute } from 'vue-router'
-import MenuSidebarItem from './MenuSidebarItem.vue'
+import MenuSidebarItemView from './MenuSidebarItemView.vue'
 
 const dataMenu: MenuSidebarItemType[] = [
   { key: '1', label: 'Dashboard', icon: VideoCameraOutlined, path: '/' },
@@ -38,7 +38,7 @@ const component = defineComponent({
   component: {
     UserOutlined,
     VideoCameraOutlined,
-    MenuSidebarItem,
+    MenuSidebarItemView,
     MenuOutlined,
     GoldOutlined,
     MoneyCollectOutlined,

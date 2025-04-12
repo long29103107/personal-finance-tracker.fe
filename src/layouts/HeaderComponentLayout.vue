@@ -65,7 +65,7 @@ const handleLogout = async () => {
 }
 
 const component = defineComponent({
-  name: 'HeaderAdmin',
+  name: 'HeaderComponentLayout',
   components: { MenuUnfoldOutlined, MenuFoldOutlined, UserOutlined, DownOutlined },
 })
 </script>
