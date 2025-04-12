@@ -6,6 +6,7 @@ import { exceptionHandler } from '@/utils/exceptionHandler'
 const API_URL = 'https://api.example.com/products'
 
 const products = ref<Product[]>([])
+const product = ref<Product | null>(null)
 
 export function useProducts() {
   const loading = ref(false)

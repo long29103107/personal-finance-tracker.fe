@@ -17,6 +17,9 @@
       "@/*": [
         "src/*"
       ]
-    }
+    },
+    "module": "ESNext",
+    "moduleResolution": "node",
+    "target": "esnext",
   }
 }

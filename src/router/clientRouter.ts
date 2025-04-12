@@ -1,4 +1,4 @@
-import Layout from '@/layouts/ClientPageLayout.vue'
+import Layout from '@/layouts/PageLayout.vue'
 import HomePage from '@/pages/HomePage.vue'
 import LoginPage from '@/pages/LoginPage.vue'
 
