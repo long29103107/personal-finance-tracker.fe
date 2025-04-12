@@ -1,8 +1,12 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import Layout from '@/layouts/PageLayout.vue'
-import HomePage from '@/pages/HomePage.vue'
+import DashboardPage from '@/pages/DashboardPage.vue'
 import LoginPage from '@/pages/LoginPage.vue'
 import UserManagerment from '@/pages/UserManagerment.vue'
+import CategoryPage from '@/pages/CategoryPage.vue'
+import GoalPage from '@/pages/GoalPage.vue'
+import BudgetPage from '@/pages/BudgetPage.vue'
+import ReportPage from '@/pages/ReportPage.vue'
 
 const routesWithLayouts = [
   {
@@ -11,13 +15,33 @@ const routesWithLayouts = [
     children: [
       {
         path: '',
-        name: 'Home',
-        component: HomePage,
+        name: 'Dashboard',
+        component: DashboardPage,
       },
       {
         path: 'user-managerment',
         name: 'UserManagerment',
         component: UserManagerment,
+      },
+      {
+        path: 'categories',
+        name: 'categories',
+        component: CategoryPage,
+      },
+      {
+        path: 'goals',
+        name: 'Goals',
+        component: GoalPage,
+      },
+      {
+        path: 'budgets',
+        name: 'Budgets',
+        component: BudgetPage,
+      },
+      {
+        path: 'reports',
+        name: 'Reports',
+        component: ReportPage,
       },
     ],
   },

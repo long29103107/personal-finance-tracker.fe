@@ -1,5 +1,5 @@
 import { ref } from 'vue'
-import type RoleType from '@/types/Common/RoleType'
+import type RoleType from '@/types/Common/Roles/RoleType'
 import { exceptionHandler } from '@/utils/exceptionHandler'
 import URL_CONSTANTS from '@/constants/url-constants'
 
@@ -8,7 +8,7 @@ export function useRole() {
   const loading = ref(false)
   const error = ref<unknown | null>(null)
   const fetchRoles = async () => {
-    loading.value = true
+    loading.value = false
     error.value = null
     // try {
     //   const { error, data } = await fetchList(URL_CONSTANTS.ROLE.GET_LIST)

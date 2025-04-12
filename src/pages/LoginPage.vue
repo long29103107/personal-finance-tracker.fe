@@ -1,12 +1,7 @@
 <template>
   <div class="login-container">
     <a-card class="login-card flex justify-center">
-      <GoogleLogin
-        :client-id="clientId"
-        :callback="handleLoginSuccess"
-        :scopes="scopes"
-        prompt="consent"
-      />
+      <GoogleLogin :client-id="clientId" :callback="handleLoginSuccess" :scopes="scopes" />
     </a-card>
   </div>
 </template>
@@ -28,7 +23,7 @@ const scopes = [
   'https://www.googleapis.com/auth/spreadsheets', // Yêu cầu quyền truy cập Google Sheets
 ]
 
-const handleLoginSuccess = async (response) => {
+const handleLoginSuccess = async (response: any) => {
   try {
     console.log('response.credential', response.credential)
 

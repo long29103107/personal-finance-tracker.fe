@@ -22,16 +22,16 @@ const operations: Array<GroupOperationType> = [
         label: 'Operation 1 Group 1',
         defaultStatus: true,
         isOverrided: false,
-        currentStatus: true
+        currentStatus: true,
       },
       {
         id: 6,
         label: 'Operation 2 Group 1',
         defaultStatus: true,
         isOverrided: false,
-        currentStatus: true
-      }
-    ]
+        currentStatus: true,
+      },
+    ],
   },
   {
     id: 2,
@@ -45,16 +45,16 @@ const operations: Array<GroupOperationType> = [
         label: 'Operation 1 Group 2',
         defaultStatus: true,
         isOverrided: false,
-        currentStatus: true
+        currentStatus: true,
       },
       {
         id: 8,
         label: 'Operation 2 Group 2',
         defaultStatus: true,
         isOverrided: false,
-        currentStatus: true
-      }
-    ]
+        currentStatus: true,
+      },
+    ],
   },
   {
     id: 3,
@@ -68,21 +68,21 @@ const operations: Array<GroupOperationType> = [
         label: 'Operation 1 Group 3',
         defaultStatus: true,
         isOverrided: false,
-        currentStatus: true
+        currentStatus: true,
       },
       {
         id: 10,
         label: 'Operation 2 Group 3',
         defaultStatus: true,
         isOverrided: false,
-        currentStatus: true
-      }
-    ]
-  }
+        currentStatus: true,
+      },
+    ],
+  },
 ]
 
 const component = defineComponent({
   name: 'GroupOperationAdmin',
-  components: { GroupOperation }
+  components: { GroupOperation },
 })
 </script>

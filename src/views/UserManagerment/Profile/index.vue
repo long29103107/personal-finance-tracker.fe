@@ -22,13 +22,24 @@ import FormProfile from './FormProfile/index.vue'
 const component = defineComponent({
   name: 'ProfileAdmin',
   components: {
-    FormProfile
-  }
+    FormProfile,
+  },
 })
 </script>
 
 <style lang="scss" scoped>
 .profile-form {
   margin-top: 20px;
+}
+
+#profile .profile_boximage {
+  justify-content: center;
+}
+
+#profile .profile_image {
+  width: 90%;
+  height: auto;
+  border-radius: 10px;
+  border-color: grey;
 }
 </style>

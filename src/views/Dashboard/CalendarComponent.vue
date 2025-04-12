@@ -11,7 +11,7 @@
                 class="my-year-select"
                 :value="String(current.year())"
                 @change="
-                  (newYear) => {
+                  (newYear: number) => {
                     onChange(current.year(+newYear))
                   }
                 "
@@ -31,7 +31,7 @@
                 :dropdown-match-select-width="false"
                 :value="String(current.month())"
                 @change="
-                  (selectedMonth) => {
+                  (selectedMonth: number) => {
                     onChange(current.month(parseInt(String(selectedMonth), 10)))
                   }
                 "
@@ -55,6 +55,8 @@
 <script lang="ts" setup>
 import { ref } from 'vue'
 import { Dayjs } from 'dayjs'
+import 'dayjs/locale/en'
+
 const value = ref<Dayjs>()
 
 const onPanelChange = (value: Dayjs, mode: string) => {
@@ -62,10 +64,9 @@ const onPanelChange = (value: Dayjs, mode: string) => {
 }
 
 const getMonths = (value: Dayjs) => {
-  const localeData = value.localeData()
   const months = []
   for (let i = 0; i < 12; i++) {
-    months.push(localeData.monthsShort(value.month(i)))
+    months.push(value.month(i).format('MMM'))
   }
   return months
 }
