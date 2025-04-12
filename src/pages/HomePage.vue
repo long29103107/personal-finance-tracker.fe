@@ -1,5 +1,6 @@
 <template>
   <main class="main-container">
+    <welcome-view />
     <a-row :gutter="[16, 16]">
       <a-col :xs="{ span: 24, offset: 0 }" :xl="{ span: 10, offset: 4 }">
         <a-card title="Line Chart" :bordered="false" style="height: 500px">
@@ -52,6 +53,7 @@ import TransactionComponent from '@/components/Home/TransactionComponent.vue'
 import CalendarComponent from '@/components/Home/CalendarComponent.vue'
 import LineChartComponent from '@/components/Home/LineChartComponent.vue'
 import { useTotalBalance } from '@/composables/useTotalBalance'
+import WelcomeView from '@/views/Dashboard/WelcomeView.vue'
 
 const router = useRouter()
 

@@ -9,7 +9,7 @@
 <script lang="ts" setup></script>
 
 <style scoped>
-.header-center {
+/* .header-center {
   padding: 20px 0;
   display: flex;
   flex-direction: column;
@@ -17,7 +17,7 @@
   justify-content: center;
   height: 100%;
   text-align: center;
-}
+} */
 
 .large-text {
   font-size: 24px;

@@ -1,9 +1,44 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import user from './clientRouter'
+import Layout from '@/layouts/PageLayout.vue'
+import HomePage from '@/pages/HomePage.vue'
+import LoginPage from '@/pages/LoginPage.vue'
+import UserManagerment from '@/pages/UserManagerment.vue'
+
+const routesWithLayouts = [
+  {
+    path: '/',
+    component: Layout,
+    children: [
+      {
+        path: '',
+        name: 'Home',
+        component: HomePage,
+      },
+      {
+        path: 'user-managerment',
+        name: 'UserManagerment',
+        component: UserManagerment,
+      },
+    ],
+  },
+]
+
+const routesWithoutLayouts = [
+  {
+    path: '/',
+    children: [
+      {
+        path: 'login',
+        name: 'Login',
+        component: LoginPage,
+      },
+    ],
+  },
+]
 
 const routes = [
-  // ...admin,
-  ...user,
+  ...routesWithLayouts,
+  ...routesWithoutLayouts,
   {
     path: '/',
     component: () => import('@/pages/errors/Page404.vue'),
