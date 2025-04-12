@@ -19,7 +19,7 @@ const tabData: TabType[] = [
 ]
 
 const component = defineComponent({
-  name: 'UserManagermentAdmin',
+  name: 'UserManagermentPage',
   components: { Tab, Profile, RolesAndPermissions },
 })
 </script>

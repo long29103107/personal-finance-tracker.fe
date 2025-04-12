@@ -5,7 +5,7 @@
 </template>
 
 <script lang="ts" setup>
-import type MenuSidebarItemType from '@/types/MenuSidebarItemType'
+import type MenuSidebarItemType from '@/types/Common/Sidebar/MenuSidebarItemType'
 import { ref, defineComponent } from 'vue'
 import {
   UserOutlined,

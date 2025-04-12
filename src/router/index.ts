@@ -2,7 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 import Layout from '@/layouts/PageLayout.vue'
 import DashboardPage from '@/pages/DashboardPage.vue'
 import LoginPage from '@/pages/LoginPage.vue'
-import UserManagerment from '@/pages/UserManagerment.vue'
+import UserManagermentPage from '@/pages/UserManagermentPage.vue'
 import CategoryPage from '@/pages/CategoryPage.vue'
 import GoalPage from '@/pages/GoalPage.vue'
 import BudgetPage from '@/pages/BudgetPage.vue'
@@ -21,7 +21,7 @@ const routesWithLayouts = [
       {
         path: 'user-managerment',
         name: 'UserManagerment',
-        component: UserManagerment,
+        component: UserManagermentPage,
       },
       {
         path: 'categories',

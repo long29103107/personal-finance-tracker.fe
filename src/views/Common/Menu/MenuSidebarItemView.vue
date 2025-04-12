@@ -13,7 +13,7 @@
 </template>
 
 <script lang="ts" setup>
-import type MenuSidebarItemType from '@/types/MenuSidebarItemType'
+import type MenuSidebarItemType from '@/types/Common/Sidebar/MenuSidebarItemType'
 import { defineComponent, defineProps, type PropType } from 'vue'
 import { UserOutlined, VideoCameraOutlined, UploadOutlined } from '@ant-design/icons-vue'
 

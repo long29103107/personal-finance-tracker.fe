@@ -8,7 +8,7 @@
 import { defineComponent } from 'vue'
 
 defineComponent({
-  name: 'ContentComponent',
+  name: 'ContentComponentLayout',
 })
 </script>
 
