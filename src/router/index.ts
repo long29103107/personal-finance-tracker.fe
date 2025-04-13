@@ -14,7 +14,7 @@ const routesWithLayouts = [
     component: Layout,
     children: [
       {
-        path: '',
+        path: '/',
         name: 'Dashboard',
         component: DashboardPage,
       },

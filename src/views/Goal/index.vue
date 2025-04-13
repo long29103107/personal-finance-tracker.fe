@@ -1,8 +1,38 @@
 <template>
   <div class="goal-page">
     <a-card title="Goal Management" :bordered="false">
-      <a-row>
-        <a-col :span="12" offset="6">
+      <a-row :gutter="16">
+        <a-col :span="16">
+          <a-card title="Goals" :bordered="false">
+            <div class="goal-actions">
+              <a-button type="primary" @click="onAddNew">Add New Goal</a-button>
+            </div>
+            <a-table :columns="columns" :data-source="goals" :row-key="(record: Goal) => record.id">
+              <template #bodyCell="{ column, record }">
+                <template v-if="column.key === 'progress'">
+                  <a-progress
+                    :percent="Math.round((record.currentAmount / record.targetAmount) * 100)"
+                    :status="getProgressStatus(record)"
+                  />
+                </template>
+                <template v-if="column.key === 'targetDate'">
+                  {{ formatDate(record.targetDate) }}
+                </template>
+                <template v-if="column.key === 'action'">
+                  <a-space>
+                    <a-button type="link" @click="onEdit(record)">
+                      <template #icon><EditOutlined /></template>
+                    </a-button>
+                    <a-button type="link" danger @click="onDelete(record)">
+                      <template #icon><DeleteOutlined /></template>
+                    </a-button>
+                  </a-space>
+                </template>
+              </template>
+            </a-table>
+          </a-card>
+        </a-col>
+        <a-col :span="8">
           <a-card
             :title="isEditing ? `Edit Goal: ${selectedGoal?.name}` : 'Add New Goal'"
             :bordered="false"
@@ -46,59 +76,16 @@
           </a-card>
         </a-col>
       </a-row>
-
-      <a-row :gutter="16">
-        <a-col :span="24">
-          <a-card title="Goals" :bordered="false">
-            <div class="goal-actions">
-              <a-button type="primary" @click="onAddNew">Add New Goal</a-button>
-            </div>
-            <a-table :columns="columns" :data-source="goals" :row-key="(record: Goal) => record.id">
-              <template #bodyCell="{ column, record }">
-                <template v-if="column.key === 'progress'">
-                  <a-progress
-                    :percent="Math.round((record.currentAmount / record.targetAmount) * 100)"
-                    :status="getProgressStatus(record)"
-                  />
-                </template>
-                
-                <template v-if="column.key === 'targetDate'">
-                  {{ formatDate(record.targetDate) }}
-                </template>
-
-                <template v-if="column.key === 'action'">
-                  <a-space>
-                    <a-button type="link" @click="onEdit(record)">
-                      <template #icon><EditOutlined /></template>
-                    </a-button>
-                    <a-button type="link" danger @click="onDelete(record)">
-                      <template #icon><DeleteOutlined /></template>
-                    </a-button>
-                  </a-space>
-                </template>
-              </template>
-            </a-table>
-          </a-card>
-        </a-col>
-      </a-row>
     </a-card>
   </div>
 </template>
 
 <script lang="ts" setup>
-import { ref, reactive, defineComponent } from 'vue'
+import { ref, reactive } from 'vue'
 import type { FormInstance } from 'ant-design-vue'
 import dayjs from 'dayjs'
 import type { TableColumnsType } from 'ant-design-vue'
 import { EditOutlined, DeleteOutlined } from '@ant-design/icons-vue'
-
-defineComponent({
-  name: 'GoalPage',
-  components: {
-    EditOutlined,
-    DeleteOutlined,
-  },
-})
 
 interface Goal {
   id: string

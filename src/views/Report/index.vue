@@ -117,6 +117,16 @@
                   </template>
                 </a-table>
               </a-tab-pane>
+              <a-tab-pane key="4" tab="Category Types">
+                <a-tree :tree-data="categoryTreeData" :defaultExpandAll="true" :show-line="true">
+                  <template #title="{ title, amount, percentage }">
+                    <span>{{ title }}</span>
+                    <span style="margin-left: 8px; color: #999">
+                      {{ formatCurrency(amount) }} ({{ percentage }}%)
+                    </span>
+                  </template>
+                </a-tree>
+              </a-tab-pane>
             </a-tabs>
           </a-card>
         </a-col>
@@ -251,6 +261,99 @@ const budgetData = [
     budget: 400,
     actual: 380,
     variance: -20,
+  },
+]
+
+const categoryTreeData = [
+  {
+    title: 'Housing',
+    amount: 1500,
+    percentage: 30,
+    children: [
+      {
+        title: 'Rent',
+        amount: 1200,
+        percentage: 24,
+      },
+      {
+        title: 'Utilities',
+        amount: 200,
+        percentage: 4,
+      },
+      {
+        title: 'Maintenance',
+        amount: 100,
+        percentage: 2,
+      },
+    ],
+  },
+  {
+    title: 'Food',
+    amount: 800,
+    percentage: 16,
+    children: [
+      {
+        title: 'Groceries',
+        amount: 500,
+        percentage: 10,
+      },
+      {
+        title: 'Dining Out',
+        amount: 300,
+        percentage: 6,
+      },
+    ],
+  },
+  {
+    title: 'Transportation',
+    amount: 400,
+    percentage: 8,
+    children: [
+      {
+        title: 'Public Transit',
+        amount: 150,
+        percentage: 3,
+      },
+      {
+        title: 'Car Expenses',
+        amount: 250,
+        percentage: 5,
+      },
+    ],
+  },
+  {
+    title: 'Entertainment',
+    amount: 300,
+    percentage: 6,
+    children: [
+      {
+        title: 'Streaming Services',
+        amount: 50,
+        percentage: 1,
+      },
+      {
+        title: 'Hobbies',
+        amount: 250,
+        percentage: 5,
+      },
+    ],
+  },
+  {
+    title: 'Health',
+    amount: 200,
+    percentage: 4,
+    children: [
+      {
+        title: 'Insurance',
+        amount: 100,
+        percentage: 2,
+      },
+      {
+        title: 'Medical Expenses',
+        amount: 100,
+        percentage: 2,
+      },
+    ],
   },
 ]
 
