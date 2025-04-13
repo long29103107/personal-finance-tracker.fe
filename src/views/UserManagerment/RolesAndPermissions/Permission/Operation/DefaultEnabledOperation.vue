@@ -8,6 +8,6 @@ import { CheckSquareTwoTone } from '@ant-design/icons-vue'
 
 const component = defineComponent({
   name: 'DefaultEnbledOperationAdmin',
-  components: { CheckSquareTwoTone }
+  components: { CheckSquareTwoTone },
 })
 </script>

@@ -8,6 +8,6 @@ import { CheckSquareFilled } from '@ant-design/icons-vue'
 
 const component = defineComponent({
   name: 'EnbledOverrideOperationAdmin',
-  components: { CheckSquareFilled }
+  components: { CheckSquareFilled },
 })
 </script>

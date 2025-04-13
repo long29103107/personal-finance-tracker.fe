@@ -1,4 +1,4 @@
-.admin-layout {
+.layout-content {
   min-height: 100vh;
 }
 
@@ -14,6 +14,14 @@
   color: #1890ff;
 }
 
-.layout-admin {
-  min-height: 100vh;
+.card {
+  border-radius: 10px;
+  background: #fff;
+  box-shadow: 0 4px 14px rgba(11, 69, 132, 0.15);
+  margin-bottom: 10px  ;
+}
+
+.font-size-25px
+{
+  font-size: 25px;
 }

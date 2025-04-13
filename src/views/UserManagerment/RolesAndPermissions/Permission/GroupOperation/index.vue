@@ -36,22 +36,28 @@ const component = defineComponent({
 })
 </script>
 
-<style lang="css" scoped>
+<style lang="css">
 .group-operation {
   list-style-type: none;
 }
 
-.group-operation_box {
-  width: 100%;
-  display: inline-flex;
-  padding: 10px 20px;
-}
-
 .group-operation_label {
+  display: flex;
   flex: auto;
 }
 
-.group-operation_item.group-operation_item--box-shadow {
+.group-operation_box {
+  padding: 10px 20px;
+  display: flex;
+}
+
+.group-operation_item {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.group-operation_item .group-operation_item--box-shadow {
   margin-top: 10px;
 }
 </style>
